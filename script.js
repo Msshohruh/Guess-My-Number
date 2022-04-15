@@ -49,7 +49,7 @@ function checking() {
         if (guessNum < randomNum) {
             message.textContent = 'Kiritilgan son kichik'
         } else {
-            message.textContent = 'Kirilhan son katta'
+            message.textContent = 'Kiritilgan son katta'
         }
         
         if (scoreNum > 1) {
@@ -61,7 +61,7 @@ function checking() {
             scoreNum--
             score.textContent = scoreNum
             message.textContent = 'You lose!!!😫 Start the game again'
-            
+
         }
         
     }
