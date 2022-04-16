@@ -8,6 +8,10 @@ const number = document.querySelector('.number')
 const message = document.querySelector('.message')
 const score = document.querySelector('.score')
 const highscore = document.querySelector('.highscore')
+const modal = document.querySelector('.modal')
+const overlay = document.querySelector('.overlay')
+const modalBtn = document.querySelector('.modal-btn')
+
 
 
 let guessNum
@@ -22,17 +26,14 @@ console.log(randomNum)
 
 checkBtn.addEventListener('click', () => {
     if (scoreNum > 0) {
-        if (guess.value == '') {
+        if (guess.value == '') {    
         alert('Siz hech narsa kiritmadingiz!')
-    } else {
+        } else {
         guessNum = guess.value
         console.log(guessNum)
         checking(guessNum)
     }
-    } else {
-        alert('Game Over!!! Start the game again')
-    }
-    
+}
     
 })
 
@@ -61,13 +62,23 @@ function checking() {
             scoreNum--
             score.textContent = scoreNum
             message.textContent = 'You lose!!!😫 Start the game again'
-
+            hiddenRemove()
+            
         }
         
     }
 }
 
 againBtn.addEventListener('click', () => {
+    againGame()
+
+})
+modalBtn.addEventListener('click', () => {
+    againGame()
+    hiddenAdd()
+
+})
+function againGame() {
     body.style.backgroundColor = '#222'
     number.textContent = '?'
     guess.value = ''
@@ -76,6 +87,13 @@ againBtn.addEventListener('click', () => {
     message.textContent = 'Start guessing...'
     randomNum = getRandomNum()
     console.log(randomNum)
+}
 
-})
-
+function hiddenRemove() {
+    modal.classList.remove('hidden')
+    overlay.classList.remove('hidden')
+}
+function hiddenAdd() {
+    modal.classList.add('hidden')
+    overlay.classList.add('hidden')
+}
